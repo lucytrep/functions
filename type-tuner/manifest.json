@@ -1,0 +1,23 @@
+
+{
+  "manifest_version": 3,
+  "name": "Type-tuner",
+  "version": "1.0",
+    "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  "description": "Changes the font of websites to Comic Sans.",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["style.css"]
+    }
+  ]
+}
