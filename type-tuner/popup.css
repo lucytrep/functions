@@ -92,6 +92,12 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
   margin-block-start: 10px;
 }
 
+.font-details-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
 
 /* pasted from Figma prototype, will change to relative units down the line
 https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
