@@ -44,8 +44,6 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
   gap: 10px;
 } */
 
-
-
 /* pasted from Figma prototype, will change to relative units down the line
 https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
 
@@ -77,6 +75,7 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
   padding-inline-start: 8px;
   display: flex;
   align-items: center;
+  margin-block-start: 10px;
 }
 
 
