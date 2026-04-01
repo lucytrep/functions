@@ -21,29 +21,7 @@
                 z-index: 10000;
                 font-family: Arial, sans-serif;
                 font-size: 16px;
-                text-align: center;
                 transition: opacity 0.3s ease-in-out;
-            }
-
-            .hello-world-popup h2 {
-                margin: 0 0 10px;
-                font-size: 22px;
-                color: #4285f4;
-            }
-
-            .hello-world-popup p {
-                margin: 0;
-            }
-
-            .hello-world-popup button {
-                background-color: #4285f4;
-                color: white;
-                border: none;
-                border-radius: 10px;
-                padding: 8px 16px;
-                margin-top: 15px;
-                cursor: pointer;
-                font-weight: bold;
             }
 
             body {
@@ -123,6 +101,18 @@
                 line-height: normal;
                 letter-spacing: -0.39px;
             }
+                
+            .hello-world-popup button {
+                background-color: #7F7F7F;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                padding: 8px 16px;
+                margin-top: 15px;
+                cursor: pointer;
+                font-weight: bold;
+                text-align: center;
+            }
         `,
 
         template: `
@@ -145,7 +135,8 @@
                         <h3>Letter Spacing</h3>
                         <div class="font-details"><p>0%</p></div>
                     </div>
-                </div>
+                </div>                 
+                <button id="close-popup">Close</button>
             </div>
         `
     };
