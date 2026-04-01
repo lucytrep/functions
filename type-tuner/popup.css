@@ -6,8 +6,65 @@ body {
   width: 20rem;
 }
 
+/* pasted from Figma prototype, will change to relative units down the line
+https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
+
 h1 {
   font-family: 'Arial', sans-serif;
+  color: #000;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.9px;
+}
+
+/* pasted from Figma prototype, will change to relative units down the line
+https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
+
+h2 {
+  color: #000;
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.39px;
+}
+
+/* pasted from Figma prototype, will change to relative units down the line
+https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
+
+.container {
+  width: 255.328px;
+  height: 140.374px;
+}
+
+/* pasted from Figma prototype, will change to relative units down the line
+https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
+
+
+.font {
+  width: 255.328px;
+  height: 34.219px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+/* pasted from Figma prototype, will change to relative units down the line
+https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
+
+
+p {
+  color: #000;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.39px;
 }
 
 ul {
