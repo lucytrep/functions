@@ -4,6 +4,9 @@
 
 body {
   width: 20rem;
+  padding-inline: 10px;
+  padding-block-end: 20px;
+  /* width: 300px; */
 }
 
 /* pasted from Figma prototype, will change to relative units down the line
@@ -34,24 +37,25 @@ h2 {
 
 /* pasted from Figma prototype, will change to relative units down the line
 https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
-
+/* 
 .container {
-  width: 255.328px;
-  height: 140.374px;
-}
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+} */
+
+
 
 /* pasted from Figma prototype, will change to relative units down the line
 https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
 
-
 .font {
-  width: 255.328px;
   height: 32px;
-  /* background: #f0f0f0; */
+    /* background: #f0f0f0; */
   border: 1px solid #ccc;
   border-radius: 4px;
-  /* padding: 8px; */
   padding-inline-start: 8px;
+    /* padding: 8px; */
   display: flex;
   align-items: center;
 }
@@ -59,6 +63,25 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
 /* pasted from Figma prototype, will change to relative units down the line
 https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
 
+
+.font-details-row {
+  display: flex;
+  gap: 10px;
+}
+
+.font-details {
+  flex: 1;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding-inline-start: 8px;
+  display: flex;
+  align-items: center;
+}
+
+
+/* pasted from Figma prototype, will change to relative units down the line
+https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
 
 p {
   color: #000;
