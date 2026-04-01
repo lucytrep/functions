@@ -1,8 +1,31 @@
-/* -  Arial default font, not importing cause widely available
-- "Arial is the most widely used font for both online and printed media. Arial is also the default font in Google Docs. Arial is one of the safest web fonts, and it is available on all major operating systems."
-- https://www.w3schools.com/cssref/css_websafe_fonts.php  */
+// Content script for Hello World Extension
 
-body {
+(function() {
+    // Check if the popup already exists
+    if (document.getElementById('hello-world-extension-popup')) {
+        return;
+    }
+
+    // Layout containing styles and HTML template for the popup
+    const layout = {
+        styles: `
+            .hello-world-popup {
+                position: fixed;
+                top: 10px;
+                right: 20px;
+                background-color: #ffffff;
+                color: #333333;
+                padding: 15px 25px;
+                border-radius: 20px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                text-align: center;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            body {
   width: 20rem;
   padding-inline: 10px;
   padding-block-end: 20px;
@@ -111,51 +134,33 @@ p {
   line-height: normal;
   letter-spacing: -0.39px;
 }
+        `,
 
-ul {
-  list-style-type: none;
-  padding-inline-start: 0;
-  margin: 1rem 0;
-}
+        template: `
+            <div class="hello-world-popup" id="hello-world-extension-popup">
+                <h2>Hello World!</h2>
+                <p>This popup was created by the Chrome extension</p>
+                <button id="close-popup">Close</button>
+            </div>
+        `
+    };
 
-li {
-  padding: 0.25rem;
-}
-li:nth-child(odd) {
-  background: #80808030;
-}
-li:nth-child(even) {
-  background: #ffffff;
-}
+    // Add styles to the document
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = layout.styles;
+    document.head.appendChild(styleSheet);
 
-h3,
-p {
-  margin: 0;
-}
+    // Add the popup HTML to the page
+    document.body.insertAdjacentHTML('beforeend', layout.template); // Fixed: Changed htmlTemplate to layout.template
 
-
-/* manifest cause i cant comment
-
-
-{
-  "manifest_version": 3,
-  "name": "Type-tuner",
-  "version": "1.0",
-    "icons": {
-    "16": "images/icon-16.png",
-    "128": "images/icon-128.png"
-  },
-  "action": {
-    "default_icon": {
-      "16": "images/icon-16.png",
-      "128": "images/icon-128.png"
-    }
-  },
-  "description": "Changes the font of websites to Comic Sans.",
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "css": ["style.css"]
-    }
-  ]
-} */
+    // Add event listener to close button
+    document.getElementById('close-popup').addEventListener('click', function() {
+        const popup = document.getElementById('hello-world-extension-popup');
+        popup.style.opacity = '0';
+        
+        setTimeout(() => {
+            document.body.removeChild(popup);
+            document.head.removeChild(styleSheet);
+        }, 300);
+    });
+})();
