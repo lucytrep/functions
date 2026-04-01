@@ -1,5 +1,13 @@
+/* -  Arial default font, not importing cause widely available
+- "Arial is the most widely used font for both online and printed media. Arial is also the default font in Google Docs. Arial is one of the safest web fonts, and it is available on all major operating systems."
+- https://www.w3schools.com/cssref/css_websafe_fonts.php  */
+
 body {
   width: 20rem;
+}
+
+h1 {
+  font-family: 'Arial', sans-serif;
 }
 
 ul {
