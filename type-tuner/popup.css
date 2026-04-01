@@ -46,11 +46,14 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
 
 .font {
   width: 255.328px;
-  height: 34.219px;
-  background: #f0f0f0;
+  height: 32px;
+  /* background: #f0f0f0; */
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 8px;
+  /* padding: 8px; */
+  padding-inline-start: 8px;
+  display: flex;
+  align-items: center;
 }
 
 /* pasted from Figma prototype, will change to relative units down the line
