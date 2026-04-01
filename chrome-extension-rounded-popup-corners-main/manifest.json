@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Hello World Extension",
+  "name": "Type Tuner",
   "version": "1.0",
-  "description": "A simple Hello World Chrome extension",
+  "description": "This extension allows you to change the font of web pages to your preferred style.",
   "background": {
     "service_worker": "background.js"
   },
