@@ -79,6 +79,7 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
 .font-details-row {
   display: flex;
   gap: 10px;
+  /* width: 100% */
 }
 
 .font-details {
@@ -93,9 +94,6 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
 }
 
 .font-details-col {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
   flex: 1;
 }
 
