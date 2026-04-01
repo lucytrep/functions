@@ -37,6 +37,20 @@ h2 {
 
 /* pasted from Figma prototype, will change to relative units down the line
 https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
+
+h3 {
+  color: #7F7F7F;
+  font-family: Inter;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.27px;
+  padding-block-start: 10px;
+}
+
+/* pasted from Figma prototype, will change to relative units down the line
+https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
 /* 
 .container {
   display: flex;
