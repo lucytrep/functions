@@ -111,7 +111,7 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
 
 p {
   color: #000;
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -125,15 +125,10 @@ ul {
   margin: 1rem 0;
 }
 
-li {
-  padding: 0.25rem;
-  justify-items: center;
-  justify-content: center;
-
-}
 li:nth-child(odd) {
   background: #80808030;
 }
+
 li:nth-child(even) {
   background: #ffffff;
 }
@@ -162,7 +157,7 @@ p {
 
   span {
     color: #000;
-    font-family: Inter;
+    font-family: "Inter", sans-serif;
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
@@ -186,11 +181,11 @@ p {
 }
 .content{
   display: none;
-  padding: 20px;
-  margin-top: 15px;
-  background: #fff;
+  /* padding: 20px; */
+  /* margin-top: 15px; */
+  /* background: #fff; */
   border-radius: 7px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  /* box-shadow: 0 10px 25px rgba(0,0,0,0.1); */
 }
 .wrapper.active .content{
   display: block;
@@ -224,10 +219,19 @@ p {
   color: #bfbfbf;
 } */
 .content .options{
-  margin-top: 10px;
+  /* margin-top: 10px;
   max-height: 250px;
   overflow-y: auto;
-  padding-right: 7px;
+  padding-right: 7px; */
+
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.39px;
+
 }
 .options::-webkit-scrollbar{
   width: 7px;
@@ -240,19 +244,48 @@ p {
   background: #ccc;
   border-radius: 25px;
 }
-.options::-webkit-scrollbar-thumb:hover{
+/* .options::-webkit-scrollbar-thumb:hover{
   background: #b3b3b3;
-}
-.options li{
-  height: 50px;
+} */
+/* .options li{ */
+  /* height: 50px;
   padding: 0 13px;
-  font-size: 21px;
-}
-.options li:hover, li.selected{
-  border-radius: 5px;
-  background: #f2f2f2;
+  font-size: 21px; */
+
+    /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 10px;
+  padding-block: 10px;
+  padding-inline-start: 13px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  justify-content: space-between;
+  padding-inline-end: 15px;
+  justify-content: space-between; */
+
+    /* height: 40px;
+  padding: 0 13px;
+  font-size: 16px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+} */
+
+.options li {
+  height: 40px;
+  padding-inline-start: 13px;
+  font-size: 13px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
 }
 
+
+/* .options li:hover, li.selected {
+  background: #f2f2f2;
+  border-radius: 5px;
+} */
 
 
 /* manifest cause i cant comment
