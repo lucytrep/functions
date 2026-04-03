@@ -2,5 +2,5 @@
 /* https://www.google.com/search?q=how+to+make+an+extension+that+changes+the+font+of+your+website&rlz=1C5CHFA_enCA864CA864&oq=how+to+make+an+extension+that+changes+the+font+of+your+website&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAtIBCTEzMjc4ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8 */
 
 body, p, div, span {
-  font-family: "Comic Sans MS", "Comic Sans", cursive !important;
+  font-family: "Times New Roman", Times, serif !important;
 }
