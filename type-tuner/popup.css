@@ -66,7 +66,7 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
 .font {
   height: 32px;
     /* background: #f0f0f0; */
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 4px;
   padding-inline-start: 8px;
     /* padding: 8px; */
@@ -87,7 +87,7 @@ https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-2
 .font-details {
   flex: 1;
   height: 32px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 4px;
   padding-inline-start: 8px;
   display: flex;
@@ -120,6 +120,9 @@ ul {
 
 li {
   padding: 0.25rem;
+  justify-items: center;
+  justify-content: center;
+
 }
 li:nth-child(odd) {
   background: #80808030;
@@ -133,32 +136,42 @@ p {
   margin: 0;
 }
 
-
-.font{
-  width: 370px;
-  margin: 85px auto 0;
-}
-
-
-.select-btn, li{
+/* .select-btn, li{
   display: flex;
   align-items: center;
   cursor: pointer;
-}
+} */
 .select-btn{
-  height: 65px;
-  padding: 0 20px;
-  font-size: 22px;
-  background: #fff;
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
+  padding-block: 10px;
+  padding-inline-start: 13px;
+  border: 1px solid #ccc;
   border-radius: 7px;
   justify-content: space-between;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
+  padding-inline-end: 15px;
+  justify-content: space-between;
 
+  span {
+    color: #000;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.39px;
+  }
+
+  i {
+    font-size: larger;
+  }
+}
+/* 
 .select-btn i{
   font-size: 31px;
   transition: transform 0.3s linear;
-}
+} */
 
 
 .wrapper.active .select-btn i{
