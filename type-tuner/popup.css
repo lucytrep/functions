@@ -122,7 +122,7 @@ p {
 ul {
   list-style-type: none;
   padding-inline-start: 0;
-  margin: 1rem 0;
+  margin: 0;
 }
 
 li:nth-child(odd) {
@@ -273,7 +273,7 @@ p {
 } */
 
 .options li {
-  height: 40px;
+  height: 35px;
   padding-inline-start: 13px;
   font-size: 13px;
   border-radius: 0;

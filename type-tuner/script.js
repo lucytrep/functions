@@ -183,7 +183,7 @@ async function applyFont(font) {
 
     // coding tutor helped me and then back to claude
     // I am trying to code a chrome extension that changes the fonts on a webpage by applying style sheets with different fonts. How can I use these examples from tutorials I found online "
-    // https://claude.ai/chat/a7bf4aa3-3f50-4daf-9810-dbfe15cd44e9
+    // https://claude.ai/share/8ec75992-5d4a-49c4-84df-0fee1f466d01
     // trying to apply the fonts form the style sheets to the DOM individually and making sure it doesnt crash or look messy. Starting with the active li and applying the css to the DOM. Making sure font is not stacking ontop of one another tutor and Claude mentioned to me during session. 
 
   // find the css file for the font that was clicked
