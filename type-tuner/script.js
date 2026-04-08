@@ -217,3 +217,14 @@ async function applyFont(font) {
 
 //  removed search input
 selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+
+document.getElementById('reset').addEventListener('click', () => {
+  // Option A: Clear everything
+  chrome.storage.sync.clear(() => {
+    console.log('All settings reset');
+    // Optional: Refresh page or notify user
+  });
+
+  // Option B: Clear specific keys
+  // chrome.storage.sync.remove(['key1', 'key2'], () => { ... });
+});

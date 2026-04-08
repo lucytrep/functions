@@ -281,6 +281,10 @@ p {
   align-items: center;
 }
 
+#reset {
+  margin-block-start: 1rem;
+}
+
 
 /* .options li:hover, li.selected {
   background: #f2f2f2;
