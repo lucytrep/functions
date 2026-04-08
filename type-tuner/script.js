@@ -193,7 +193,7 @@ async function applyFont(font) {
     return;
   }
 
-  // Get the active tab (from the tutorial snippet you found)
+  // Get the active tab (from the tutorial)
   const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
 
 // https://developer.chrome.com/docs/extensions/reference/api/scripting#method-removeCSS
@@ -218,13 +218,75 @@ async function applyFont(font) {
 //  removed search input
 selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
 
-document.getElementById('reset').addEventListener('click', () => {
-  // Option A: Clear everything
-  chrome.storage.sync.clear(() => {
-    console.log('All settings reset');
-    // Optional: Refresh page or notify user
-  });
+    // if (activeFontCSS) {
+    //     await chrome.scripting.removeCSS({
+    //     target: { tabId: tab.id },
+    //     files: [activeFontCSS]
+    //     });
+    // }
 
-  // Option B: Clear specific keys
-  // chrome.storage.sync.remove(['key1', 'key2'], () => { ... });
-});
+    // Clear storage
+    // chrome.storage.sync.clear(() => {
+    //     console.log('All storage cleared');
+    //     // Optional: Reload extension or notify user
+    //     chrome.runtime.reload(); 
+    // });
+
+
+// chrome.scripting.removeCSS({
+//   target: { tabId: tab.id  },
+//     // target: { tabId: someTabId },
+//   files: ['popup.css']
+// });
+
+
+// searched in google how to remove injected CSS from a chrome extension top search and a couple articles recommended a function which I have manipulated below to follow my style sheets
+// async needed because function uses await - without it the await calls will not work shown earlier in my work
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+    document.getElementById('resetBtn').addEventListener('click', async () => {
+        // https://developer.chrome.com/docs/extensions/reference/api/scripting#method-removeCSS
+        // if a font is active
+        if (activeFontCSS) {
+            // within this chrome page
+            // https://developer.chrome.com/docs/extensions/reference/api/tabs#method-query
+            // find the active tab same as applyFont above
+            const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+            // https://developer.chrome.com/docs/extensions/reference/api/scripting#method-removeCSS
+            // remove when the user presses reset
+            await chrome.scripting.removeCSS({
+                target: { tabId: tab.id },
+                files: [activeFontCSS]
+            });
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null
+            // reset activeFontCSS to null so extension removes active font
+            activeFontCSS = null;
+        }
+        // from previous function and continuation of tutorial https://www.codingnepalweb.com/custom-select-menu-html-javascript/
+        // selectBtn.firstElementChild.innerText = selectedLi.innerText;
+        // resets label back to default no injected CSS just <label>Select Font</label> from html
+        selectBtn.firstElementChild.innerText = "Select Font";
+        // re render with no selection from previous function in tutorial
+        addFont();
+    });
+
+
+// // https://developer.chrome.com/docs/extensions/reference/api/scripting#method-removeCSS
+//     // if a font is active the previous will be removed so not stacking ontop of one another
+//     if (activeFontCSS) {
+//         await chrome.scripting.removeCSS({
+//         target: { tabId: tab.id },
+//         files: [activeFontCSS]
+//         });
+//     }
+
+    // // adapted to get tabId and inject CSS directly
+    // chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+    //     const tabId = tabs[0].id;
+    //     // https://developer.chrome.com/docs/extensions/reference/api/scripting#method-removeCSS
+    //     // changed to cssFont
+    //     await chrome.scripting.removeCSS({ target: { tabId }, files: Object.values(cssFont) });
+    //     // adapted from focus-mode tutorial: https://developer.chrome.com/docs/extensions/get-started/tutorial/scripts-activetab
+    //     // changed to font not map
+    //     chrome.scripting.insertCSS({ target: { tabId }, files: [cssFont[font]] });
+    // });
+
