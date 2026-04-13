@@ -1,0 +1,10 @@
+/* <!-- following other structure for font css style sheets -->
+
+
+<!-- body, p, h1, h2, h3, h4, h5, h6, a, li, span, div {
+  font-family: "Courier New", Courier, monospace !important;
+} --> */
+
+body, div, main, section, article, header {
+  background-color: #F0F4FF !important;
+}
