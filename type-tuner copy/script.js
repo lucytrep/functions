@@ -273,6 +273,8 @@ selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
         // selectBtn.firstElementChild.innerText = selectedLi.innerText;
         // resets label back to default no injected CSS just <label>Select Font</label> from html
         selectBtn.firstElementChild.innerText = "Select Font";
+        // when button is pressed this is just making sure no description shows when I type in ""
+        document.getElementById("font-description").textContent = "";
         // re render with no selection from previous function in tutorial
         addFont();
     });

@@ -291,3 +291,7 @@ p {
   margin-top: 8px;
   min-height: 36px; /* prevents layout jump */
 }
+
+#font-description:empty {
+    display: none;
+}
