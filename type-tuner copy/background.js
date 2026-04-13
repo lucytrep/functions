@@ -88,9 +88,50 @@
 //   document.body.style.backgroundColor = color;
 // }
 
+// // adapted from updateHistory in tutorial which reads from local storage
+// async function updateHistory(input) {
+//   const { apiSuggestions } = await chrome.storage.local.get('apiSuggestions');
+
+// https://developer.chrome.com/docs/extensions/reference/api/storage
+// chrome.storage.local.get(["key"]).then((result) => {
+//   console.log("Value is " + result.key);
+// });
+
+// chrome.storage.local.get("activeBackgroundCSS", (result) => {
+//    if (result.activeBackgroundCSS) {
+//         activeBackgroundCSS = result.activeBackgroundCSS;
+//     }
+// });
+
+// }
+
+// activeBackgroundCSS = cssFile;
+// chrome.storage.local.set({ activeBackgroundCSS: cssFile });
+
+
+// // Fetch tip & save in storage
+// // https://developer.chrome.com/docs/extensions/get-started/tutorial/service-worker-events
+// const updateTip = async () => {
+//   const response = await fetch('https://chrome.dev/f/extension_tips/');
+//   const tips = await response.json();
+//   const randomIndex = Math.floor(Math.random() * tips.length);
+// //   return chrome.storage.local.set({ tip: tips[randomIndex] });
+
+//   chrome.storage.local.set({ activeBackgroundCSS: cssFile });
+
+// };
+
 // same pattern as applyFont in script.js
 // applies colors to css files and removes previous
 let activeBackgroundCSS = null;
+
+// adapted from chrome.storage.local.get in tutorial
+// https://developer.chrome.com/docs/extensions/reference/api/storage
+chrome.storage.local.get("activeBackgroundCSS", (result) => {
+   if (result.activeBackgroundCSS) {
+        activeBackgroundCSS = result.activeBackgroundCSS;
+    }
+});
 
 async function applyBackground(color) {
     const cssBackground = {
@@ -125,6 +166,11 @@ async function applyBackground(color) {
   });
 
   activeBackgroundCSS = cssFile;
+
+//   activeBackgroundCSS = cssFile;
+// adapted from updateTip in tutorial which saves from local storage
+chrome.storage.local.set({ activeBackgroundCSS: cssFile });
+
 }
 
 // // addEventListener pattern from arena file closeButton.addEventListener('click', () => {
@@ -170,5 +216,10 @@ document.getElementById('resetBtn').addEventListener('click', async () => {
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null
             // reset activeBackgroundCSS to null so extension removes active background
             activeBackgroundCSS = null;
+
+        // clearing the background from storage when reset is pressed so it does not come back
+        // https://developer.chrome.com/docs/extensions/reference/api/storage
+        chrome.storage.local.remove("activeBackgroundCSS");
         }
 });
+
