@@ -151,3 +151,24 @@ document.querySelectorAll(".swatch").forEach(swatch => {
 //         // let category = isMaterial ? 'materials' : isHouse ? 'houses' : isInspiration ? 'inspirations' : isResource ? 'resources' : isDetail ? 'details' : isFinish ? 'finishes' : 'resources'
 //         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator
 //         let isSelected = font == selectedFont ? "selected" : "";
+
+// same as in other file, changed to background not font
+document.getElementById('resetBtn').addEventListener('click', async () => {
+        // https://developer.chrome.com/docs/extensions/reference/api/scripting#method-removeCSS
+        // if a background is active
+        if (activeBackgroundCSS) {
+            // within this chrome page
+            // https://developer.chrome.com/docs/extensions/reference/api/tabs#method-query
+            // find the active tab same as applyBackground above
+            const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+            // https://developer.chrome.com/docs/extensions/reference/api/scripting#method-removeCSS
+            // remove when the user presses reset
+            await chrome.scripting.removeCSS({
+                target: { tabId: tab.id },
+                files: [activeBackgroundCSS]
+            });
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null
+            // reset activeBackgroundCSS to null so extension removes active background
+            activeBackgroundCSS = null;
+        }
+});
