@@ -48,6 +48,7 @@ function addFont(selectedFont) {
         // sets visible text inside the <li> to the font name
         // https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
         li.textContent = font;
+        
         // i wanted each font option in the dropdown to preview itself so the user can see what it looks like before selecting
         // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
         // MDN shows that CSS properties with dashes like font-family are written in camelCase in JS

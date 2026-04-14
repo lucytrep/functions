@@ -8,3 +8,9 @@
 body, div, main, section, article, header {
   background-color: #FFF8F0 !important;
 }
+
+/* https://typography-interaction-2526.github.io/topic/html/#block-elements 
+added more from class site to target block elements to change the font color */
+p, h1, h2, h3, h4, h5, h6, span, a, li, label, blockquote, figcaption, pre {
+    color: #2c2c2c !important;
+}
