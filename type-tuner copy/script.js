@@ -48,7 +48,7 @@ function addFont(selectedFont) {
         // sets visible text inside the <li> to the font name
         // https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
         li.textContent = font;
-        
+
         // i wanted each font option in the dropdown to preview itself so the user can see what it looks like before selecting
         // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
         // MDN shows that CSS properties with dashes like font-family are written in camelCase in JS
@@ -279,7 +279,7 @@ selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
         // from previous function and continuation of tutorial https://www.codingnepalweb.com/custom-select-menu-html-javascript/
         // selectBtn.firstElementChild.innerText = selectedLi.innerText;
         // resets label back to default no injected CSS just <label>Select Font</label> from html
-        selectBtn.firstElementChild.innerText = "Select Font";
+        selectBtn.firstElementChild.innerText = "Select font-family";
         // when button is pressed this is just making sure no description shows when I type in ""
         document.getElementById("font-description").textContent = "";
         // re render with no selection from previous function in tutorial
