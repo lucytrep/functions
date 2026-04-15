@@ -1,4 +1,3 @@
-
 // Target your form.
 let formElement = document.querySelector('.preset-form')
 // redefining variable so I dont need all files in one
@@ -38,18 +37,42 @@ let formElement = document.querySelector('.preset-form')
 // I wanted the saved presets to show up as a list every time the user saves one and when they first open the extension
 // The Claude thread helped me understand that localStorage only stores strings not arrays so I needed JSON.parse to convert it back
 // https://claude.ai/share/8041d88f-3be1-4d86-96db-65a10a97d8a7
-// I learned that localStorage stores everything as strings so JSON.parse is needed to turn it back into an array I can loop over
-// same createElement and insertAdjacentElement pattern as addFont in script.js but just reading from localStorage instead of a fonts array
+// basically get some data, loop through it, create elements, put them on the page
 let renderPresets = () => {
   let list = document.querySelector("#preset-list")
-  // clearing the list before rebuilding it which is the same as options.innerHTML = "" in addFont
+  // Clear the list before rebuilding it so presets do not repeat
   list.innerHTML = ""
-  // reading from localStorage and converting the string back to an array so I can loop over it
+  // localStorage stores text, so JSON.parse turns the saved presets back into an array
   let presets = JSON.parse(localStorage.getItem("presets") || "[]")
+
   // same forEach pattern as fonts.forEach in script.js and json.data.forEach in arena file
-  presets.forEach((preset) => {
+    presets.forEach((preset, index) => {
     let li = document.createElement("li")
     li.textContent = preset.name
+
+    // I originally had the delete button outside this function, but `list` was not defined there
+    // this needs to stay inside renderPresets() so it can access `list`
+    // same createElement pattern as addFont in script.js
+    let deleteBtn = document.createElement("button")
+    deleteBtn.textContent = "Delete"
+
+    // same addEventListener pattern from script.js
+    // coding tutor flagged that chrome extensions block inline onclick handlers so addEventListener is required
+    // Get the latest saved presets, remove the clicked one, then save and re-render the list.
+    deleteBtn.addEventListener("click", () => {
+      let presets = JSON.parse(localStorage.getItem("presets") || "[]")
+      // splice removes one item at the index position
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+      // remove the clicked preset then save the updated array and finally rebuild the list
+      presets.splice(index, 1)
+      // saving updated array back same localStorage.setItem as storeParams in tutorial
+      localStorage.setItem("presets", JSON.stringify(presets))
+      renderPresets()
+    })
+
+    // appending button inside li first then li into the list
+    // console showed li.innerHTML was empty when order was wrong
+    li.appendChild(deleteBtn)
     list.appendChild(li)
   })
 }
@@ -86,3 +109,28 @@ formElement.addEventListener("submit", (event) => {
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reset
     formElement.reset()
 })
+
+// presets.forEach((preset, index) => {
+//   // same createElement pattern as addFont in script.js
+//   let li = document.createElement("li")
+//   li.textContent = preset.name
+
+//   // creating a delete button for each preset - same createElement pattern
+//   let deleteBtn = document.createElement("button")
+//   deleteBtn.textContent = "Delete"
+
+//   // same addEventListener pattern from script.js and arena file
+//   deleteBtn.addEventListener("click", () => {
+//     // splice removes one item at the index position from the array
+//     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+//     presets.splice(index, 1)
+//     // saving the updated array back - same localStorage.setItem as storeParams in tutorial
+//     localStorage.setItem("presets", JSON.stringify(presets))
+//     // rebuild the list after deleting
+    renderPresets()
+//   })
+
+//   // appending delete button inside the li then adding li to the list
+//   li.appendChild(deleteBtn)
+//   list.appendChild(li)
+// })

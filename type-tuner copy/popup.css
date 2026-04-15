@@ -325,3 +325,7 @@ p {
   border-radius: 3px;
   border: 1px solid #757575;
 }
+
+.preset-form {
+    margin-block-start: 1rem;
+}
