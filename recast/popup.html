@@ -64,8 +64,8 @@
             <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes -->
             <!-- needed a way to store the hex color value on each swatch button so applyBackground and savePreset could read it back when clicked -->
             <!-- learned that data-color lets me attach the hex value directly to the element so JavaScript can access it with dataset.color without needing a separate variable, easier shortcut for me -->
-            <button class="swatch font-card" data-color="#FAF9F6" style="background:#FAF9F6;" title="White">
-              <span class="font-label" style="color: #2c2c2c;">White</span>
+            <button class="swatch font-card" data-color="#FAF9F6" style="background:#FAF9F6;" title="Light">
+              <span class="font-label" style="color: #2c2c2c;">Light</span>
             </button>
             <button class="swatch font-card" data-color="#2c2c2c" style="background:#2c2c2c;" title="Dark">
               <span class="font-label" style="color: #FAF9F6;">Dark</span>
@@ -76,15 +76,21 @@
           </div>
       </div>
 
+      <div class="preset-section">
+        <p class="preset-title">Presets</p>
+
       <form class="preset-form"> 
         <!-- taken and changed from forms-params-storage tutorial -->
         <!-- https://github.com/typography-interaction-2526/forms-params-storage -->
         <!-- Different types can control what is allowed: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
         <input id="pre" name="preset" placeholder="Preset name" required type="text">
-        <button id="save">Save</button>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/submit -->
+        <!-- based on michaels feedback using input for user text entry and submit for handling save action -->
+         <button type="submit">Save</button>
       </form>
 
         <ul id="preset-list"></ul>
+      </div>
 
 
       </article>

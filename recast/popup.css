@@ -53,45 +53,6 @@ h3 {
 /* pasted from Figma prototype, will change to relative units down the line
 https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
 
-.font {
-  height: 32px;
-    /* background: #f0f0f0; */
-  /* border: 1px solid #ccc; */
-  border-radius: 4px;
-  padding-inline-start: 8px;
-    /* padding: 8px; */
-  display: flex;
-  align-items: center;
-}
-
-/* pasted from Figma prototype, will change to relative units down the line
-https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
-
-
-.font-details-row {
-  display: flex;
-  gap: 10px;
-  /* width: 100% */
-}
-
-.font-details {
-  flex: 1;
-  height: 32px;
-  /* border: 1px solid #ccc; */
-  border-radius: 4px;
-  padding-inline-start: 8px;
-  display: flex;
-  align-items: center;
-  margin-block-start: 10px;
-}
-
-.font-details-col {
-  flex: 1;
-}
-
-/* pasted from Figma prototype, will change to relative units down the line
-https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
-
 p {
   color: #000;
   font-family: "Inter", sans-serif;
@@ -108,95 +69,9 @@ ul {
   margin: 0;
 }
 
-li:nth-child(odd) {
-  background: #80808030;
-}
-
-li:nth-child(even) {
-  background: #ffffff;
-}
-
 h3,
 p {
   margin: 0;
-}
-
-.select-btn{
-  display: flex;
-  /* flex-direction: column; */
-  gap: 10px;
-  padding-block: 10px;
-  padding-inline-start: 13px;
-  border: 1px solid #ccc;
-  border-radius: 7px;
-  justify-content: space-between;
-  padding-inline-end: 15px;
-  justify-content: space-between;
-
-  span {
-    color: #000;
-    font-family: "Inter", sans-serif;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.39px;
-  }
-
-  i {
-    font-size: larger;
-  }
-}
-
-.wrapper.active .select-btn i{
-  transform: rotate(-180deg);
-}
-.content{
-  display: none;
-  /* padding: 20px; */
-  /* margin-top: 15px; */
-  /* background: #fff; */
-  border-radius: 7px;
-  /* box-shadow: 0 10px 25px rgba(0,0,0,0.1); */
-}
-.wrapper.active .content{
-  display: block;
-}
-
-.content .options{
-
-  color: #000;
-  font-family: "Inter", sans-serif;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.39px;
-
-}
-.options::-webkit-scrollbar{
-  width: 7px;
-}
-.options::-webkit-scrollbar-track{
-  background: #f1f1f1;
-  border-radius: 25px;
-}
-.options::-webkit-scrollbar-thumb{
-  background: #ccc;
-  border-radius: 25px;
-}
-
-.options li {
-  height: 35px;
-  padding-inline-start: 13px;
-  font-size: 13px;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-}
-
-#resetBtn {
-  margin-block-start: 1rem;
 }
 
 /* from figma why I have px */
@@ -204,7 +79,6 @@ p {
 #font-description {
   color:#757575;
   margin-block-start: 8px;
-  font-family: "Inter", sans-serif;
   font-size: 13px;
   letter-spacing: -0.39px;
   padding-inline-start: 4px;
@@ -220,7 +94,6 @@ label {
   /* margin-block-start: 15px; */
   padding-inline-start: 4px;
   color: black;
-  font-family: "Inter", sans-serif;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -0.39px;
@@ -230,19 +103,6 @@ label {
   display: flex;
   gap: 10px;
   padding-inline-start: 4px;
-}
-
-/* from figma why I have px */
-
-.swatch {
-  width: 35px;
-  height: 35px;
-  border-radius: 3px;
-  border: 1px solid #757575;
-}
-
-.preset-form {
-    margin-block-start: 1rem;
 }
 
 /* from figma, using px and the extension is so small */
@@ -259,7 +119,6 @@ label {
   flex-direction: column;
   gap: 8px;
 }
-
 
 .font-card {
   display: flex;
@@ -292,7 +151,7 @@ label {
   width: 100px;
   height: 80px;
   border-radius: 14px;
-  flex: none;
+  /* flex: none; */
   margin-block-start: 5px;
 }
 
@@ -308,4 +167,78 @@ label {
   border: 2px solid #2c2c2c;
   outline: 2px solid #fff;
   outline-offset: 2px;
+}
+
+.preset-section {
+  margin-block-start: 18px;
+}
+
+.preset-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  margin-block: 8px;
+  margin-inline-start: 4px;
+}
+
+.preset-form {
+  display: flex;
+  gap: 10px;
+  padding-inline-start: 4px;
+  align-items: stretch;
+}
+
+.preset-form input {
+  flex: 1;
+  min-width: 0;
+  padding-block: 8px;
+  padding-inline: 12px;
+  border: 1px solid #9a9a9a;
+  border-radius: 8px;
+  font-size: 13px;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.preset-form button,
+#preset-list button,
+#resetBtn {
+  width: 80px;
+  height: 36px;
+  box-sizing: border-box;
+  border: 1px solid #bfc3c9;
+  border-radius: 8px;
+  background: #f7f7f7;
+  font-size: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#preset-list {
+  margin-block-start: 4px;
+  padding-inline-start: 0;
+}
+
+#preset-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 10px;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 13px;
+  padding-inline-start: 4px;
+}
+
+#resetBtn {
+  background: #fce8e8;
+  border-color: #faadad;
+  color: #9d1818;
+  margin-block-start: 12px;
+  margin-inline-start: 4px;
+}
+
+.preset-form button {
+  background: #e4feed;
+  border-color: #79e999;
+  color: #14592e;
 }

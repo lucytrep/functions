@@ -18,7 +18,7 @@ chrome.storage.local.get("activeBackgroundCSS", (result) => {
 
 async function applyBackground(color) {
     const cssBackground = {
-        "#FAF9F6": "background/white.css",
+        "#FAF9F6": "background/light.css",
         "#2c2c2c": "background/dark.css",
         "#F5F0E8": "background/paper.css",
         }
