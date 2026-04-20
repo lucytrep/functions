@@ -94,12 +94,12 @@ function addFont(selectedFont) {
 
 // declaring the variable we learned in class
 const fontDescriptions = {
-    "Sans-serif": "Clean and open. Easier to scan for people with reading differences like dyslexia.",
-    "Serif": "Traditional and grounded. Helps with focus on long reads and editorial content.",
-    "Mono": "Spaced and structured. Useful for processing dense or technical information."
+    "Sans-serif": "Clean and open. Can help with readability.",
+    "Serif": "Traditional feel. Good for editorial content.",
+    "Mono": "Fixed spacing. Helpful for dense text."
 };
 
-// continuation of tutorial https://www.codingnepalweb.com/custom-select-menu-html-javascript/
+// // continuation of tutorial https://www.codingnepalweb.com/custom-select-menu-html-javascript/
 // addFont();
 // function updateName(selectedLi) {
 //     // removed input
@@ -203,10 +203,23 @@ async function applyFont(font) {
 
 
 // same pattern as background swatch forEach but scoped to .font-section so active states dont interfere with each other
+// document.querySelectorAll(".font-section .font-card").forEach(font => {
+//   font.addEventListener("click", () => {
+//     document.querySelectorAll(".font-section .font-card").forEach(s => s.classList.remove("active"))
+//     font.classList.add("active")
+//     applyFont(font.dataset.font)
+//   })
+// })
+
+// updated
 document.querySelectorAll(".font-section .font-card").forEach(font => {
   font.addEventListener("click", () => {
     document.querySelectorAll(".font-section .font-card").forEach(s => s.classList.remove("active"))
     font.classList.add("active")
+    // update description when font card is clicked
+    // old
+    // document.getElementById("font-description").textContent = fontDescriptions[selectedLi.innerText] || "";
+    document.getElementById("font-description").textContent = fontDescriptions[font.dataset.font] || ""
     applyFont(font.dataset.font)
   })
 })

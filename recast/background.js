@@ -50,6 +50,13 @@ chrome.storage.local.set({ activeBackgroundCSS: cssFile });
 
 }
 
+// same function from font script file
+const backgroundDescriptions = {
+  "#FAF9F6": "Bright and neutral. Good for daytime reading.",
+  "#2c2c2c": "Dark background. Easier on the eyes at night.",
+  "#F5F0E8": "Warm and soft. Less harsh than pure white."
+};
+
 // background color is applied one at a time, the html swatches loop and each has its own listener so nothing fires at the same time
 // i also needed to be able to save the presets so the swatch could be read/remembered when clicked on
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
@@ -60,6 +67,11 @@ document.querySelectorAll("#bg-swatches .swatch").forEach(swatch => {
     document.querySelectorAll("#bg-swatches .swatch").forEach(s => s.classList.remove("active"))
     swatch.classList.add("active")
     applyBackground(swatch.dataset.color)
+    // update description when swatch card is clicked
+    // old
+    // document.getElementById("font-description").textContent = fontDescriptions[selectedLi.innerText] || ""
+    document.getElementById("bg-description").textContent = backgroundDescriptions[swatch.dataset.color] || ""
+    // applyBackground(swatch.dataset.font)
   })
 })
 

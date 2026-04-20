@@ -78,13 +78,21 @@ p {
 
 #font-description {
   color:#757575;
-  margin-block-start: 8px;
   font-size: 13px;
-  letter-spacing: -0.39px;
-  padding-inline-start: 4px;
+  margin-block-end: 10px;
 }
 
 #font-description:empty {
+    display: none;
+}
+
+#bg-description {
+  color:#757575;
+  font-size: 13px;
+  padding-block-start: 15px;
+}
+
+#bg-description:empty {
     display: none;
 }
 
