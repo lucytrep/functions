@@ -22,16 +22,32 @@
 
   <!-- following tutorial to implement drop down menu. I will be replacing the content with CSS style sheets like Eric mentioned which will take over the page and control the font.
   https://www.codingnepalweb.com/custom-select-menu-html-javascript/#google_vignette  -->
-    <article> 
+    <!-- <article> 
     <form class="wrapper">
-      <div class="select-btn">
+      <div class="select-btn"> -->
         <!-- telling me what inline elements go within form element
         this item is a clickable caption for the font inputs options
         https://www.google.com/search?q=what+inline+elements+need+to+go+inside+%3Cform%3E&sca_esv=91f788fc0d48d683&rlz=1C5CHFA_enCA864CA864&biw=1728&bih=962&sxsrf=ANbL-n4gHsT0a3Y3aX4L5mB_ji6H3YlSgg%3A1775617497151&ei=2cXVafDzCM2A5OMPr-3puA0&ved=0ahUKEwiwxLLRot2TAxVNAHkGHa92GtcQ4dUDCBE&uact=5&oq=what+inline+elements+need+to+go+inside+%3Cform%3E&gs_lp=Egxnd3Mtd2l6LXNlcnAiLXdoYXQgaW5saW5lIGVsZW1lbnRzIG5lZWQgdG8gZ28gaW5zaWRlIDxmb3JtPjIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAFIqBtQiAZYnxlwAHgCkAEAmAGHAaABswKqAQMyLjG4AQPIAQD4AQGYAgSgAskCwgIEEAAYR8ICBBAjGCfCAgUQABjvBZgDAOIDBRIBMSBAiAYBkAYIkgcDMy4xoAeFDbIHAzIuMbgHxQLCBwUwLjIuMsgHC4AIAQ&sclient=gws-wiz-serp -->
-        <label>Select font-family</label>
+        <!-- <label>Select font-family</label> -->
         <!-- don't need "search" -->
-        <i>▾</i>
+        <!-- <i>▾</i>
+      </div> -->
+
+      <div class="fonts">
+        <button class="font-card" data-font="Sans-serif">
+          <span class="font-preview" style="font-family:'Inter', sans-serif;">Aa</span>
+          <span class="font-label">Sans Serif</span>
+        </button>
+        <button class="font-card" data-font="Serif">
+          <span class="font-preview" style="font-family: 'Times New Roman', serif;">Aa</span>
+          <span class="font-label">Serif</span>
+        </button>
+        <button class="font-card" data-font="Mono">
+          <span class="font-preview" style="font-family: 'Roboto Mono', monospace;">Aa</span>
+          <span class="font-label">Monospace</span>
+        </button>
       </div>
+
       <div class="content">
         <!-- changed search to option -->
         <ul class="options"></ul>

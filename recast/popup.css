@@ -243,3 +243,38 @@ p {
 .preset-form {
     margin-block-start: 1rem;
 }
+
+/* from figma, using px and the extension is so small */
+
+.fonts {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.font-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 14px;
+  border: 2px solid #E5E7EB;
+  background: white;
+  cursor: pointer;
+  padding-block: 10px;
+}
+
+.font-preview {
+  padding-block-start: 5px;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 35px;
+}
+
+.font-label {
+  font-size: 13px;
+  color: #6B7280;
+  /* padding-block-start: 15px; */
+}

@@ -1,11 +1,6 @@
-/* <!-- following other structure for font css style sheets -->
-
-
-<!-- body, p, h1, h2, h3, h4, h5, h6, a, li, span, div {
-  font-family: "Courier New", Courier, monospace !important;
-} --> */
-
-body, div, main, section, article, header {
+/* went through and added more to fill areas that Eric mentioned in class to me when the nyc times website drop downs wouldn't fill
+https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements */
+body, div, main, section, article, header, aside, footer, figure, button, input, select, textarea {
   background-color: #F5F0E8 !important;
 }
 

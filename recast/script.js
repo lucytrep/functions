@@ -23,10 +23,10 @@ chrome.runtime.onMessage.addListener((message) => {
 // removing the search function and input to only options for my font styling sheets
 // learned how to adapt an existing dropdown tutorial to work for my own font list instead of countries
 
-const wrapper = document.querySelector(".wrapper"),
-selectBtn = wrapper.querySelector(".select-btn"),
-// removed input field cause no search
-options = wrapper.querySelector(".options");
+// const wrapper = document.querySelector(".wrapper"),
+// selectBtn = wrapper.querySelector(".select-btn"),
+// // removed input field cause no search
+// options = wrapper.querySelector(".options");
 
 // changed countries to fonts
 let fonts = ["Sans-serif", "Serif", "Mono"];
@@ -100,19 +100,19 @@ const fontDescriptions = {
 };
 
 // continuation of tutorial https://www.codingnepalweb.com/custom-select-menu-html-javascript/
-addFont();
-function updateName(selectedLi) {
-    // removed input
-    // searchInp.value = "";
-    addFont(selectedLi.innerText);
-    wrapper.classList.remove("active");
-    selectBtn.firstElementChild.innerText = selectedLi.innerText;
-    // coding tutor - passes chosen font name to applyFont to inject CSS into the active tab
-    // same as scripts into active tab from tutorial https://developer.chrome.com/docs/extensions/get-started/tutorial/scripts-activetab
-    // updates the description paragraph in the HTML when a font is selected
-    document.getElementById("font-description").textContent = fontDescriptions[selectedLi.innerText] || "";
-    applyFont(selectedLi.innerText);
-}
+// addFont();
+// function updateName(selectedLi) {
+//     // removed input
+//     // searchInp.value = "";
+//     addFont(selectedLi.innerText);
+//     wrapper.classList.remove("active");
+//     selectBtn.firstElementChild.innerText = selectedLi.innerText;
+//     // coding tutor - passes chosen font name to applyFont to inject CSS into the active tab
+//     // same as scripts into active tab from tutorial https://developer.chrome.com/docs/extensions/get-started/tutorial/scripts-activetab
+//     // updates the description paragraph in the HTML when a font is selected
+//     document.getElementById("font-description").textContent = fontDescriptions[selectedLi.innerText] || "";
+//     applyFont(selectedLi.innerText);
+// }
 
 // tracking the active font outside the function mentioned from Claude when I was tryign to tackle the bottom half of this function below. 
 // https://claude.ai/chat/a7bf4aa3-3f50-4daf-9810-dbfe15cd44e9
@@ -166,7 +166,7 @@ async function applyFont(font) {
 }
 
 //  removed search input
-selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+// selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
 
 // searched in google how to remove injected CSS from a chrome extension top search and a couple articles recommended a function which I have manipulated below to follow my style sheets
 // async needed because function uses await - without it the await calls will not work shown earlier in my work
@@ -194,9 +194,19 @@ selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
         // from previous function and continuation of tutorial https://www.codingnepalweb.com/custom-select-menu-html-javascript/
         // selectBtn.firstElementChild.innerText = selectedLi.innerText;
         // resets label back to default no injected CSS just <label>Select Font</label> from html
-        selectBtn.firstElementChild.innerText = "Select font-family";
+        // selectBtn.firstElementChild.innerText = "Select font-family";
         // when button is pressed this is just making sure no description shows when I type in ""
         document.getElementById("font-description").textContent = "";
         // re render with no selection from previous function in tutorial
-        addFont();
+        // addFont();
     });
+
+
+// using the background function here but replacing with font-family cards
+document.querySelectorAll(".font-card").forEach(font => {
+  font.addEventListener("click", () => {
+    document.querySelectorAll(".font-card").forEach(s => s.classList.remove("active"))
+    font.classList.add("active")
+    applyFont(font.dataset.font)
+  })
+})

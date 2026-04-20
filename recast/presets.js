@@ -18,10 +18,12 @@ let applyPreset = (preset) => {
   }
 
   // Update the dropdown label so the UI matches the preset that was applied
-  let fontLabel = document.querySelector(".select-btn label")
-  if (fontLabel) {
-    fontLabel.innerText = preset.fontFamily
-  }
+  // let fontLabel = document.querySelector(".select-btn label")
+  // fixing based on new font cards
+  // let fontLabel = document.querySelector(".font-card.active")
+  // if (fontLabel) {
+  //   fontLabel.innerText = preset.fontFamily
+  // }
 }
 
 // I wanted the saved presets to show up as a list every time the user saves one and when they first open the extension
@@ -104,7 +106,8 @@ let savePreset = () => {
   let newPreset = {
     name: presetName,
     background: selectedSwatch.dataset.color,
-    fontFamily: document.querySelector(".select-btn label").innerText
+    // updating function for new font cards
+    fontFamily: document.querySelector(".font-card.active").dataset.font
   }
 
   let presets = JSON.parse(localStorage.getItem("presets") || "[]")

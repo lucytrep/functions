@@ -1,7 +1,10 @@
 /* searched on google -how to make an extension that changes the font of your website, same for manifest file.  */
 /* https://www.google.com/search?q=how+to+make+an+extension+that+changes+the+font+of+your+website&rlz=1C5CHFA_enCA864CA864&oq=how+to+make+an+extension+that+changes+the+font+of+your+website&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAtIBCTEzMjc4ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8 */
 
+/* https://fonts.google.com/selection/embed */
+/* Inter Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 body, p, h1, h2, h3, h4, h5, h6, a, li, span, div {
-  font-family: "Arial", sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
 }
