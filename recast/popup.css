@@ -295,3 +295,7 @@ label {
   flex: none;
   margin-block-start: 5px;
 }
+
+.font-card.active {
+  border: 2px solid #000;
+}
