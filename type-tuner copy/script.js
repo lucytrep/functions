@@ -1,6 +1,27 @@
+// expose applyFont so other popup scripts can reuse the same font logic
+// https://developer.mozilla.org/en-US/docs/Web/API/Window
+// https://chatgpt.com/share/69dfc366-0530-8330-a8ed-391d485cbaf3
+// I learned that attaching a function to window makes it globally accessible across scripts, I have my pages separate for organization and to better understand the functions for my own learning but with this I have to use functions like this so the file can reach around and grab the functions applied to the other js pages
+window.applyFont = applyFont
+
+
+// https://chatgpt.com/share/69dfc366-0530-8330-a8ed-391d485cbaf3
+// I wanted the page to react when a saved preset was clicked in the popup
+// more research here too "Chrome Extensions runtime.onMessage" https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onMessage
+// I learned that onMessage can receive the preset object from the popup and use it to update the page DOM
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "APPLY_PRESET") {
+    console.log("received preset:", message.preset)
+
+    document.body.style.backgroundColor = message.preset.background
+    document.body.style.fontFamily = message.preset.fontFamily
+  }
+})
+
 // https://www.codingnepalweb.com/custom-select-menu-html-javascript/
 // coding tutor helped me go through and update the country to font option
 // removing the search function and input to only options for my font styling sheets
+// learned how to adapt an existing dropdown tutorial to work for my own font list instead of countries
 
 const wrapper = document.querySelector(".wrapper"),
 selectBtn = wrapper.querySelector(".select-btn"),
@@ -100,7 +121,7 @@ let activeFontCSS = null;
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
 // coding tutor showed me applyfont function this is the fonts being applied within the drop down
 // maps each font name to its css file within the folder font-family when selected
-// more research https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
+// learned that object initializer syntax lets me pair each font name with its file path so I can look it up by key
 async function applyFont(font) {
     const cssFont = {
         "Sans-serif": "font-family/sans-serif.css",
@@ -264,6 +285,7 @@ selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
         if (activeFontCSS) {
             // within this chrome page
             // https://developer.chrome.com/docs/extensions/reference/api/tabs#method-query
+            // learned that chrome.tabs.query with active and lastFocusedWindow gives me the current tab to pass into scripting
             // find the active tab same as applyFont above
             const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
             // https://developer.chrome.com/docs/extensions/reference/api/scripting#method-removeCSS
@@ -274,6 +296,7 @@ selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
             });
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null
             // reset activeFontCSS to null so extension removes active font
+            // setting the variable back to null clears the reference so the next font can apply cleanly
             activeFontCSS = null;
         }
         // from previous function and continuation of tutorial https://www.codingnepalweb.com/custom-select-menu-html-javascript/
@@ -306,4 +329,3 @@ selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
     //     // changed to font not map
     //     chrome.scripting.insertCSS({ target: { tabId }, files: [cssFont[font]] });
     // });
-

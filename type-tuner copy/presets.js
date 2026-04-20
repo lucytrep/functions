@@ -33,6 +33,31 @@ let formElement = document.querySelector('.preset-form')
 // // 	updateUrlParams()
 // // })
 
+// https://chatgpt.com/share/69dfc366-0530-8330-a8ed-391d485cbaf3
+// Apply the saved preset values when a preset is clicked
+// // Background is applied to the popup, and font is applied only to the content area
+// I was having so much trouble with presets saving and applying them correctly
+
+// https://chatgpt.com/share/69dfc366-0530-8330-a8ed-391d485cbaf3
+// I was trying to get clicked presets to reapply their saved font and background back to the page
+// the problem was document.body inside the popup points to the popup itself not the active tab so styles were not reaching the webpage
+// from thread the apply logic needs to go through the shared window function later on including on window.applyFont and window.applyBackground in the li click listener
+let applyPreset = (preset) => {
+  console.log("applying preset:", preset)
+
+//   document.body.style.backgroundColor = preset.background
+
+  let content = document.querySelector("article")
+  if (content) {
+    // content.style.fontFamily = preset.fontFamily
+  }
+
+  // Update the dropdown label so the UI matches the preset that was applied
+  let fontLabel = document.querySelector(".select-btn label")
+  if (fontLabel) {
+    fontLabel.innerText = preset.fontFamily
+  }
+}
 
 // I wanted the saved presets to show up as a list every time the user saves one and when they first open the extension
 // The Claude thread helped me understand that localStorage only stores strings not arrays so I needed JSON.parse to convert it back
@@ -48,7 +73,40 @@ let renderPresets = () => {
   // same forEach pattern as fonts.forEach in script.js and json.data.forEach in arena file
     presets.forEach((preset, index) => {
     let li = document.createElement("li")
-    li.textContent = preset.name
+    // was dubplicating if I had the below
+    // li.textContent = preset.name
+
+// create a separate element for the preset name so it can be styled and clicked independently, and does not effect the rest of the row
+// https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+// I learned that createElement("span") lets me create a separate element for the preset name inside the list item
+let presetName = document.createElement("span")
+presetName.textContent = preset.name
+
+// make it visually clickable
+// https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/cursor
+// I learned that cursor: pointer shows the clickable hand cursor instead of the text cursor
+presetName.style.cursor = "pointer"
+
+
+// when a saved preset is clicked, reuse the existing font and background functions
+// https://developer.mozilla.org/en-US/docs/Web/API/Window
+// so the preset applies to the active webpage again
+// I learned that the preset row can listen for a click event and call the shared font and background functions again through window
+li.addEventListener("click", () => {
+  window.applyFont?.(preset.fontFamily)
+  window.applyBackground?.(preset.background)
+})
+
+
+//     // https://chatgpt.com/share/69dfc366-0530-8330-a8ed-391d485cbaf3
+//     li.addEventListener("click", async () => {
+//   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
+
+//   chrome.tabs.sendMessage(tab.id, {
+//     type: "APPLY_PRESET",
+//     preset: preset
+//   })
+// })
 
     // I originally had the delete button outside this function, but `list` was not defined there
     // this needs to stay inside renderPresets() so it can access `list`
@@ -72,8 +130,14 @@ let renderPresets = () => {
 
     // appending button inside li first then li into the list
     // console showed li.innerHTML was empty when order was wrong
-    li.appendChild(deleteBtn)
-    list.appendChild(li)
+    // li.appendChild(deleteBtn)
+    // list.appendChild(li)
+
+// played around and learned how to build and insert elements into the DOM using appendChild which allows each preset to be added dynamically to the list
+// https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+li.appendChild(presetName)
+li.appendChild(deleteBtn)
+list.appendChild(li)
   })
 }
 
@@ -84,16 +148,22 @@ let renderPresets = () => {
 let savePreset = () => {
   let presetName = new FormData(formElement).get("preset")
   if (!presetName) return
+
+  let selectedSwatch = document.querySelector(".swatch.active")
+  if (!selectedSwatch) return
+
   let newPreset = {
     name: presetName,
-    background: document.body.style.backgroundColor,
-    fontFamily: document.querySelector('.select-btn label').innerText
+    background: selectedSwatch.dataset.color,
+    fontFamily: document.querySelector(".select-btn label").innerText
   }
+
   let presets = JSON.parse(localStorage.getItem("presets") || "[]")
   presets.push(newPreset)
   localStorage.setItem("presets", JSON.stringify(presets))
   renderPresets()
 }
+
 
 // I wanted the input field to clear after the user saves a preset so they can type a new one
 // Watch for events adapted from forms-params-storage tutorial

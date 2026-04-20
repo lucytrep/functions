@@ -6,7 +6,6 @@ let updateForm = (params) => {
 	// Parse into params:
 	// https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
 	params = new URLSearchParams(params)
-
 	// Our friend, the `forEach` loop:
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 	params.forEach((value, key) => {

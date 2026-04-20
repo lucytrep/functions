@@ -1,3 +1,11 @@
+// expose applyBackground so other popup scripts can reuse the same background logic
+// https://developer.mozilla.org/en-US/docs/Web/API/Window
+// https://chatgpt.com/share/69dfc366-0530-8330-a8ed-391d485cbaf3
+// window function mentioned in my other Chat
+window.applyBackground = applyBackground
+
+
+
 // // Copyright 2023 Google LLC
 // //
 // // Licensed under the Apache License, Version 2.0 (the "License");
@@ -184,11 +192,25 @@ chrome.storage.local.set({ activeBackgroundCSS: cssFile });
 // nothing is applied at the same time
 // js is looking for event listeners to apply the color to the background unlike the list items for font-family
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+// document.querySelectorAll(".swatch").forEach(swatch => {
+//     swatch.addEventListener("click", () => {
+//         applyBackground(swatch.dataset.color);
+//     });
+// });
+
+// background color is applied one at a time, the html swatches loop and each has its own listener so nothing fires at the same time
+// i also needed to be able to save the presets so the swatch could be read/remembered when clicked on
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+// forEach gives each swatch its own listener and classList.remove clears active from all before adding it to just the clicked one
 document.querySelectorAll(".swatch").forEach(swatch => {
-    swatch.addEventListener("click", () => {
-        applyBackground(swatch.dataset.color);
-    });
-});
+  swatch.addEventListener("click", () => {
+    document.querySelectorAll(".swatch").forEach(s => s.classList.remove("active"))
+    swatch.classList.add("active")
+    applyBackground(swatch.dataset.color)
+  })
+})
+
 
 // function addFont(selectedFont) {
 //     options.innerHTML = "";
