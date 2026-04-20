@@ -113,11 +113,15 @@ let savePreset = () => {
   }
 
   let presets = JSON.parse(localStorage.getItem("presets") || "[]")
-  presets.push(newPreset)
+  // presets.push(newPreset)
+  // how to add item to front of list javascript searched
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift
+  // I wanted the newest preset to appear at the top of the list instead of the bottom
+  // I learned that unshift adds to the beginning of an array while push adds to the end
+  presets.unshift(newPreset)
   localStorage.setItem("presets", JSON.stringify(presets))
   renderPresets()
 }
-
 
 // I wanted the input field to clear after the user saves a preset so they can type a new one
 // Watch for events adapted from forms-params-storage tutorial
