@@ -214,14 +214,15 @@ p {
     display: none;
 }
 
-.bg-label {
+label {
   display: block;
   margin-block-end: 8px;
-  margin-block-start: 15px;
+  /* margin-block-start: 15px; */
   padding-inline-start: 4px;
   color: black;
   font-family: "Inter", sans-serif;
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 500;
   letter-spacing: -0.39px;
 }
 
@@ -250,7 +251,15 @@ p {
   display: flex;
   flex-direction: row;
   gap: 16px;
+  margin-block-end: 15px;
 }
+
+.font-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 
 .font-card {
   display: flex;
@@ -277,4 +286,12 @@ p {
   font-size: 13px;
   color: #6B7280;
   /* padding-block-start: 15px; */
+}
+
+.swatch.font-card {
+  width: 100px;
+  height: 80px;
+  border-radius: 14px;
+  flex: none;
+  margin-block-start: 5px;
 }

@@ -100,7 +100,8 @@ let savePreset = () => {
   let presetName = new FormData(formElement).get("preset")
   if (!presetName) return
 
-  let selectedSwatch = document.querySelector(".swatch.active")
+  // updated selector here so it only look inside #bg-swatches so it doesnt accidentally grab font cards
+  let selectedSwatch = document.querySelector("#bg-swatches .swatch.active")
   if (!selectedSwatch) return
 
   let newPreset = {

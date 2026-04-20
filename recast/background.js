@@ -18,15 +18,9 @@ chrome.storage.local.get("activeBackgroundCSS", (result) => {
 
 async function applyBackground(color) {
     const cssBackground = {
-        "#FFF8F0": "background/warm.css",
-        "#F0F4FF": "background/cool.css",
+        "#FAF9F6": "background/white.css",
         "#2c2c2c": "background/dark.css",
         "#F5F0E8": "background/paper.css",
-        // "Sans-serif": "font-family/sans-serif.css",
-        // // "Georgia": "font-family/georgia.css",
-        // "Serif": "font-family/serif.css",
-        // "Mono": "font-family/mono.css",
-        // // "Verdana": "font-family/verdana.css"
         }
 
         const cssFile = cssBackground[color];
@@ -61,9 +55,9 @@ chrome.storage.local.set({ activeBackgroundCSS: cssFile });
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 // forEach gives each swatch its own listener and classList.remove clears active from all before adding it to just the clicked one
-document.querySelectorAll(".swatch").forEach(swatch => {
+document.querySelectorAll("#bg-swatches .swatch").forEach(swatch => {
   swatch.addEventListener("click", () => {
-    document.querySelectorAll(".swatch").forEach(s => s.classList.remove("active"))
+    document.querySelectorAll("#bg-swatches .swatch").forEach(s => s.classList.remove("active"))
     swatch.classList.add("active")
     applyBackground(swatch.dataset.color)
   })

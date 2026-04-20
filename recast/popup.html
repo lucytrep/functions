@@ -33,6 +33,8 @@
         <!-- <i>▾</i>
       </div> -->
 
+    <div class="font-section">
+      <label>Font Family</label>
       <div class="fonts">
         <button class="font-card" data-font="Sans-serif">
           <span class="font-preview" style="font-family:'Inter', sans-serif;">Aa</span>
@@ -47,6 +49,7 @@
           <span class="font-label">Monospace</span>
         </button>
       </div>
+    </div>
 
       <div class="content">
         <!-- changed search to option -->
@@ -56,14 +59,21 @@
   <p id="font-description"></p>
 
       <div class="bg-color">
-        <label class="bg-label">Background</label>
+        <label>Background</label>
           <div class="bg-swatches" id="bg-swatches">
             <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes -->
-            <button class="swatch" data-color="#FFF8F0" style="background:#FFF8F0;" title="Warm"></button>
-            <button class="swatch" data-color="#F0F4FF" style="background:#F0F4FF;" title="Cool"></button>
-            <button class="swatch" data-color="#2c2c2c" style="background:#2c2c2c;" title="Dark"></button>
-            <button class="swatch" data-color="#F5F0E8" style="background:#F5F0E8;" title="Paper"></button>
-       </div>
+            <!-- needed a way to store the hex color value on each swatch button so applyBackground and savePreset could read it back when clicked -->
+            <!-- learned that data-color lets me attach the hex value directly to the element so JavaScript can access it with dataset.color without needing a separate variable, easier shortcut for me -->
+            <button class="swatch font-card" data-color="#FAF9F6" style="background:#FAF9F6;" title="White">
+              <span class="font-label" style="color: #2c2c2c;">White</span>
+            </button>
+            <button class="swatch font-card" data-color="#2c2c2c" style="background:#2c2c2c;" title="Dark">
+              <span class="font-label" style="color: #FAF9F6;">Dark</span>
+            </button>
+            <button class="swatch font-card" data-color="#F5F0E8" style="background:#F5F0E8;" title="Paper">
+              <span class="font-label" style="color: #2c2c2c;">Paper</span>
+            </button>
+          </div>
       </div>
 
       <form class="preset-form"> 
