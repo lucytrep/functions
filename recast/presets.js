@@ -108,7 +108,8 @@ let savePreset = () => {
     name: presetName,
     background: selectedSwatch.dataset.color,
     // updating function for new font cards
-    fontFamily: document.querySelector(".font-card.active").dataset.font
+    // adding ? so it doesn't crash similar to arena assignment and how I handled selectors scoping
+    fontFamily: document.querySelector(".font-section .font-card.active")?.dataset.font
   }
 
   let presets = JSON.parse(localStorage.getItem("presets") || "[]")

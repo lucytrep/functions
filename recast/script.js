@@ -202,10 +202,10 @@ async function applyFont(font) {
     });
 
 
-// using the background function here but replacing with font-family cards
-document.querySelectorAll(".font-card").forEach(font => {
+// same pattern as background swatch forEach but scoped to .font-section so active states dont interfere with each other
+document.querySelectorAll(".font-section .font-card").forEach(font => {
   font.addEventListener("click", () => {
-    document.querySelectorAll(".font-card").forEach(s => s.classList.remove("active"))
+    document.querySelectorAll(".font-section .font-card").forEach(s => s.classList.remove("active"))
     font.classList.add("active")
     applyFont(font.dataset.font)
   })
