@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Type Tuner",
-  "description": "This extension allows you to change the font of web pages to your preferred style.",
+  "name": "Recast",
+  "description": "This extension allows you to change the font and background color of web pages to your preferred style.",
   "version": "1.0",
   "icons": {
     "16": "images/icon-16.png",
