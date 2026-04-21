@@ -47,7 +47,6 @@ async function applyBackground(color) {
 //   activeBackgroundCSS = cssFile;
 // adapted from updateTip in tutorial which saves from local storage
 chrome.storage.local.set({ activeBackgroundCSS: cssFile });
-
 }
 
 // same function from font script file
@@ -99,4 +98,3 @@ document.getElementById('resetBtn').addEventListener('click', async () => {
         chrome.storage.local.remove("activeBackgroundCSS");
         }
 });
-

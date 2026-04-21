@@ -17,13 +17,6 @@ let applyPreset = (preset) => {
     // content.style.fontFamily = preset.fontFamily
   }
 
-  // Update the dropdown label so the UI matches the preset that was applied
-  // let fontLabel = document.querySelector(".select-btn label")
-  // fixing based on new font cards
-  // let fontLabel = document.querySelector(".font-card.active")
-  // if (fontLabel) {
-  //   fontLabel.innerText = preset.fontFamily
-  // }
 }
 
 // I wanted the saved presets to show up as a list every time the user saves one and when they first open the extension
@@ -42,6 +35,18 @@ let renderPresets = () => {
     let li = document.createElement("li")
     // was dubplicating if I had the below
     // li.textContent = preset.name
+
+// I wanted each preset row to visually preview what it looks like when applied to a page
+// so instead of just showing the name I applied the saved background and font directly to the li
+// same inline style pattern as li.style.fontFamily in addFont in script.js
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+// I learned I could set backgroundColor and fontFamily directly on the element from the saved preset object
+li.style.backgroundColor = preset.background
+li.style.fontFamily = preset.fontFamily
+// I also needed the text color to work on both light and dark backgrounds
+// the ternary checks if the background is dark and switches the text to light and vice versa
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator
+li.style.color = preset.background === "#2c2c2c" ? "#FAF9F6" : "#2c2c2c"
 
 // create a separate element for the preset name so it can be styled and clicked independently, and does not effect the rest of the row
 // https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement

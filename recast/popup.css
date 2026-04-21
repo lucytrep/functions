@@ -222,9 +222,14 @@ label {
   flex-shrink: 0;
 }
 
+#preset-list button {
+  width: 80px;
+  flex-shrink: 0;
+}
+
 #preset-list {
-  margin-block-start: 4px;
-  padding-inline-start: 0;
+  width: 100%;
+  padding-inline-start: 4px;
 }
 
 #preset-list li {
@@ -249,4 +254,39 @@ label {
   background: #e4feed;
   border-color: #79e999;
   color: #14592e;
+}
+
+#preset-list li {
+  border-radius: 10px;
+  padding-block: 10px;
+  height: auto;
+  padding-inline-start: 12px;
+  padding-inline-end: 8px;
+  font-size: 15px;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-block: 8px;
+}
+
+/* buttons don't inherit text color from their parent by default due to browser default styles */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/inherit */
+/* I learned that color, inherit passes the color down from the li so the delete button matches whether the preset is light or dark without me having to set it twice */
+#preset-list button {
+  width: 68px;
+  font-size: 13px;
+  padding-block: 6px;
+  padding-inline: 9px;
+  color: inherit;
+  height: auto;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: rgba(190, 190, 190, 0.222);
+  border: 0.5px solid rgba(128,128,128,0.25);
 }

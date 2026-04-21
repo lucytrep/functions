@@ -4,7 +4,6 @@
 // I learned that attaching a function to window makes it globally accessible across scripts, I have my pages separate for organization and to better understand the functions for my own learning but with this I have to use functions like this so the file can reach around and grab the functions applied to the other js pages
 window.applyFont = applyFont
 
-
 // https://chatgpt.com/share/69dfc366-0530-8330-a8ed-391d485cbaf3
 // I wanted the page to react when a saved preset was clicked in the popup
 // more research here too "Chrome Extensions runtime.onMessage" https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onMessage
@@ -12,21 +11,10 @@ window.applyFont = applyFont
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "APPLY_PRESET") {
     console.log("received preset:", message.preset)
-
     document.body.style.backgroundColor = message.preset.background
     document.body.style.fontFamily = message.preset.fontFamily
   }
 })
-
-// https://www.codingnepalweb.com/custom-select-menu-html-javascript/
-// coding tutor helped me go through and update the country to font option
-// removing the search function and input to only options for my font styling sheets
-// learned how to adapt an existing dropdown tutorial to work for my own font list instead of countries
-
-// const wrapper = document.querySelector(".wrapper"),
-// selectBtn = wrapper.querySelector(".select-btn"),
-// // removed input field cause no search
-// options = wrapper.querySelector(".options");
 
 // changed countries to fonts
 let fonts = ["Sans-serif", "Serif", "Mono"];
@@ -99,21 +87,6 @@ const fontDescriptions = {
     "Mono": "Fixed spacing. Helpful for dense text."
 };
 
-// // continuation of tutorial https://www.codingnepalweb.com/custom-select-menu-html-javascript/
-// addFont();
-// function updateName(selectedLi) {
-//     // removed input
-//     // searchInp.value = "";
-//     addFont(selectedLi.innerText);
-//     wrapper.classList.remove("active");
-//     selectBtn.firstElementChild.innerText = selectedLi.innerText;
-//     // coding tutor - passes chosen font name to applyFont to inject CSS into the active tab
-//     // same as scripts into active tab from tutorial https://developer.chrome.com/docs/extensions/get-started/tutorial/scripts-activetab
-//     // updates the description paragraph in the HTML when a font is selected
-//     document.getElementById("font-description").textContent = fontDescriptions[selectedLi.innerText] || "";
-//     applyFont(selectedLi.innerText);
-// }
-
 // tracking the active font outside the function mentioned from Claude when I was tryign to tackle the bottom half of this function below. 
 // https://claude.ai/chat/a7bf4aa3-3f50-4daf-9810-dbfe15cd44e9
 let activeFontCSS = null;
@@ -165,8 +138,6 @@ async function applyFont(font) {
   activeFontCSS = cssFile;
 }
 
-//  removed search input
-// selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
 
 // searched in google how to remove injected CSS from a chrome extension top search and a couple articles recommended a function which I have manipulated below to follow my style sheets
 // async needed because function uses await - without it the await calls will not work shown earlier in my work
@@ -200,16 +171,6 @@ async function applyFont(font) {
         // re render with no selection from previous function in tutorial
         // addFont();
     });
-
-
-// same pattern as background swatch forEach but scoped to .font-section so active states dont interfere with each other
-// document.querySelectorAll(".font-section .font-card").forEach(font => {
-//   font.addEventListener("click", () => {
-//     document.querySelectorAll(".font-section .font-card").forEach(s => s.classList.remove("active"))
-//     font.classList.add("active")
-//     applyFont(font.dataset.font)
-//   })
-// })
 
 // updated
 document.querySelectorAll(".font-section .font-card").forEach(font => {
