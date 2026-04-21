@@ -1,72 +1,57 @@
+:root {
+  --font: "Inter", sans-serif;
+  --color-text: #000;
+  --color-muted: #757575;
+  --color-border: #E5E7EB;
+  --color-dark: #2c2c2c;
+  --radius-card: 14px;
+  --radius-btn: 8px;
+}
+
 body {
   width: 20rem;
-  padding-inline: 10px;
-  padding-block-end: 20px;
-  /* width: 300px; */
-    border-radius: 12px;
+  padding-inline: 0.625rem;
+  padding-block-end: 1.25rem;
+  border-radius: 12px;
   overflow: hidden;
 }
 
-/* pasted from Figma prototype, will change to relative units down the line
-https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
+h1, h2, h3, p {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  font-style: normal;
+  line-height: normal;
+}
 
 h1 {
-  font-family: "Inter", sans-serif;
-  color: #000;
-  font-size: 35px;
-  font-style: normal;
+  font-size: 2.18rem;
   font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.9px;
-  padding-block-end: 0;
-  margin-block-end: 0;
+  letter-spacing: -0.05rem;
 }
-
-/* pasted from Figma prototype, will change to relative units down the line
-https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
 
 h2 {
-  color: #000;
-  font-family: "Inter", sans-serif;
-  font-size: 15px;
-  font-style: normal;
+  font-size: 0.93rem;
   font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  padding-block-end: 5px;
+  letter-spacing: -0.02rem;
+  padding-block-end: 0.31rem;
 }
-
-/* pasted from Figma prototype, will change to relative units down the line
-https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
 
 h3 {
-  color: #7F7F7F;
-  font-family: "Inter", sans-serif;
-  font-size: 9px;
-  font-style: normal;
+  color: var(--color-muted);
+  font-size: 0.56rem;
   font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.27px;
-  padding-block-start: 10px;
+  letter-spacing: 0.016rem;
+  padding-block-start: 0.625rem;
 }
 
-/* pasted from Figma prototype, will change to relative units down the line
-https://www.figma.com/design/0U98ZUQkZn9AKklQUUK5xy/Lucy-Trepanier?node-id=302-252&m=dev */
-
 p {
-  color: #000;
-  font-family: "Inter", sans-serif;
-  font-size: 13px;
-  font-style: normal;
+  font-size: 0.812rem;
   font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.39px;
+  letter-spacing: -0.02rem;
 }
 
 ul {
   list-style-type: none;
-  padding-inline-start: 0;
-  margin: 0;
 }
 
 h3,
@@ -74,12 +59,24 @@ p {
   margin: 0;
 }
 
-/* from figma why I have px */
+label {
+  display: block;
+  margin-block-end: 0.5rem;
+  padding-inline-start: 0.25rem;
+  color: black;
+  font-size: 0.94rem;
+  font-weight: 500;
+  letter-spacing: -0.02rem;
+}
+
+#font-description,
+#bg-description {
+  color: var(--color-muted);
+  font-size: 0.81rem;
+}
 
 #font-description {
-  color:#757575;
-  font-size: 13px;
-  margin-block-end: 10px;
+  margin-block-end: 0.63rem;
 }
 
 #font-description:empty {
@@ -87,45 +84,23 @@ p {
 }
 
 #bg-description {
-  color:#757575;
-  font-size: 13px;
-  padding-block-start: 15px;
+  padding-block-start: 0.94rem;
 }
 
 #bg-description:empty {
     display: none;
 }
 
-label {
-  display: block;
-  margin-block-end: 8px;
-  /* margin-block-start: 15px; */
-  padding-inline-start: 4px;
-  color: black;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.39px;
-}
-
-.bg-swatches {
+.font-section {
   display: flex;
-  gap: 10px;
-  padding-inline-start: 4px;
+  flex-direction: column;
+  gap: 0.5rem;
 }
-
-/* from figma, using px and the extension is so small */
 
 .fonts {
   display: flex;
   flex-direction: row;
-  gap: 16px;
-  margin-block-end: 15px;
-}
-
-.font-section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  gap: 1rem;
 }
 
 .font-card {
@@ -134,120 +109,132 @@ label {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  border-radius: 14px;
-  border: 2px solid #E5E7EB;
+  gap: 0.5rem;
+  border-radius: var(--radius-card);
+  border: 0.13rem solid var(--color-border);
   background: white;
   cursor: pointer;
-  padding-block: 10px;
+  padding-block: 0.63rem;
 }
 
 .font-preview {
-  padding-block-start: 5px;
-  font-size: 48px;
+  padding-block-start: 0.31rem;
+  font-size: 3rem;
   font-weight: 500;
-  line-height: 35px;
+  line-height: 2.19rem;
 }
 
 .font-label {
-  font-size: 13px;
+  font-size: 0.81rem;
   color: #6B7280;
-  /* padding-block-start: 15px; */
 }
 
 .swatch.font-card {
-  width: 100px;
-  height: 80px;
-  border-radius: 14px;
-  /* flex: none; */
-  margin-block-start: 5px;
+  width: 6.25rem;
+  height: 5rem;
+  border-radius: var(--radius-card);
+  margin-block-start: 0.31rem;
 }
 
 .font-section .font-card.active {
-  border: 2px solid #000;
+  border: 0.13rem solid var(--color-text);
+}
+
+.bg-swatches {
+  display: flex;
+  gap: 0.63rem;
+  padding-inline-start: 0.25rem;
 }
 
 #bg-swatches .swatch.active {
-  border: 2px solid #000;
+  border: 0.13rem solid var(--color-text);
 }
 
 #bg-swatches .dark-swatch.active {
-  border: 2px solid #2c2c2c;
-  outline: 2px solid #fff;
-  outline-offset: 2px;
+  border: 0.13rem solid var(--color-dark);
+  outline: 0.13rem solid #fff;
+  outline-offset: 0.13rem;
 }
 
 .preset-section {
-  margin-block-start: 18px;
+  margin-block-start: 1.13rem;
 }
 
 .preset-title {
-  font-size: 15px;
+  font-size: 0.94rem;
   font-weight: 500;
-  color: #000;
-  margin-block: 8px;
-  margin-inline-start: 4px;
+  color: var(--color-text);
+  margin-block: 0.5rem;
+  margin-inline-start: 0.25rem;
 }
 
 .preset-form {
   display: flex;
-  gap: 10px;
-  padding-inline-start: 4px;
+  gap: 0.63rem;
+  padding-inline-start: 0.25rem;
   align-items: stretch;
 }
 
 .preset-form input {
   flex: 1;
   min-width: 0;
-  padding-block: 8px;
-  padding-inline: 12px;
-  border: 1px solid #9a9a9a;
-  border-radius: 8px;
-  font-size: 13px;
-  height: 36px;
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+  border: 0.06rem solid var(--color-muted);
+  border-radius: var(--radius-btn);
+  font-size: 0.81rem;
+  height: 2.25rem;
   box-sizing: border-box;
-}
-
-.preset-form button,
-#preset-list button,
-#resetBtn {
-  width: 80px;
-  height: 36px;
-  box-sizing: border-box;
-  border: 1px solid #bfc3c9;
-  border-radius: 8px;
-  background: #f7f7f7;
-  font-size: 13px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-#preset-list button {
-  width: 80px;
-  flex-shrink: 0;
 }
 
 #preset-list {
   width: 100%;
-  padding-inline-start: 4px;
+  padding-inline-start: 0.25rem;
 }
 
 #preset-list li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 10px;
-  border-bottom: 1px solid #d9d9d9;
-  font-size: 13px;
-  padding-inline-start: 4px;
+  padding-block: 0.63rem;
+  padding-inline-start: 0.75rem;
+  padding-inline-end: 0.5rem;
+  font-size: 0.94rem;
+  border-radius: 0.63rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-block: 0.5rem;
 }
 
+/* buttons don't inherit text color from their parent by default due to browser default styles */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/inherit */
+/* I learned that color, inherit passes the color down from the li so the delete button matches whether the preset is light or dark without me having to set it twice */
+#preset-list button {
+  width: 4.25rem;
+  height: auto;
+  font-size: 0.81rem;
+  padding-block: 0.38rem;
+  padding-inline: 0.56rem;
+  color: inherit;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  background: rgba(190, 190, 190, 0.222);
+  border: 0.03rem solid rgba(128, 128, 128, 0.25);
+}
+
+.preset-form button,
 #resetBtn {
-  background: #fce8e8;
-  border-color: #faadad;
-  color: #9d1818;
-  margin-block-start: 12px;
-  margin-inline-start: 4px;
+  width: 5rem;
+  height: 2.25rem;
+  box-sizing: border-box;
+  border: 0.06rem solid #bfc3c9;
+  border-radius: var(--radius-btn);
+  background: #f7f7f7;
+  font-size: 0.81rem;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .preset-form button {
@@ -256,37 +243,10 @@ label {
   color: #14592e;
 }
 
-#preset-list li {
-  border-radius: 10px;
-  padding-block: 10px;
-  height: auto;
-  padding-inline-start: 12px;
-  padding-inline-end: 8px;
-  font-size: 15px;
-  border-bottom: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  overflow: hidden;
-  margin-block: 8px;
-}
-
-/* buttons don't inherit text color from their parent by default due to browser default styles */
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/inherit */
-/* I learned that color, inherit passes the color down from the li so the delete button matches whether the preset is light or dark without me having to set it twice */
-#preset-list button {
-  width: 68px;
-  font-size: 13px;
-  padding-block: 6px;
-  padding-inline: 9px;
-  color: inherit;
-  height: auto;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  border-radius: 8px;
-  cursor: pointer;
-  flex-shrink: 0;
-  background: rgba(190, 190, 190, 0.222);
-  border: 0.5px solid rgba(128,128,128,0.25);
+#resetBtn {
+  background: #fce8e8;
+  border-color: #faadad;
+  color: #9d1818;
+  margin-block-start: 0.75rem;
+  margin-inline-start: 0.25rem;
 }

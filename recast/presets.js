@@ -73,7 +73,7 @@ li.addEventListener("click", () => {
     // this needs to stay inside renderPresets() so it can access `list`
     // same createElement pattern as addFont in script.js
     let deleteBtn = document.createElement("button")
-    deleteBtn.textContent = "Delete"
+    deleteBtn.textContent = "Remove"
 
     // same addEventListener pattern from script.js
     // coding tutor flagged that chrome extensions block inline onclick handlers so addEventListener is required
