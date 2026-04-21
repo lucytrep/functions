@@ -41,8 +41,9 @@ async function applyBackground(color) {
         await chrome.scripting.removeCSS({
         target: { tabId: tab.id },
         files: [activeBackgroundCSS]
-      });
+        });
     }
+
   activeBackgroundCSS = cssFile;
 
 //   activeBackgroundCSS = cssFile;
