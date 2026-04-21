@@ -1,4 +1,4 @@
-<h1>Recast 🪄</h1>
+<img width="128" height="128" alt="icon-128" src="https://github.com/user-attachments/assets/523083cd-b5ef-42bd-a577-2b07fa658355" /><h1>Recast 🪄</h1>
 
 You can switch between three font families and adjust background colors to match your preference. If a site doesn’t offer dark mode or the typography feels off, you can change it instantly.
 
