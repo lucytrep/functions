@@ -1,108 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="reset.css"rel="stylesheet">
-    <link rel="stylesheet" href="./popup.css" />
-  </head>
-  <body>
-    <template id="li_template">
-      <li>
-        <a>
-          <h3 class="title">Type Tuner</h3>
-          <p class="pathname">Font</p>
-        </a>
-      </li>
-    </template>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="reset.css"rel="stylesheet">
+		<link rel="stylesheet" href="./popup.css" />
+	</head>
+<body>
 
-    <h1>Recast 🪄</h1>
-    <h2>Customize how you consume content.</h2>
+	<template id="li_template">
+		<li>
+			<a>
+				<h3 class="title">Type Tuner</h3>
+				<p class="pathname">Font</p>
+			</a>
+		</li>
+	</template>
 
+	<header>
+		<h1>Recast 🪄</h1>
+		<h2>Customize how you consume content.</h2>
+	</header>
 
-  <!-- following tutorial to implement drop down menu. I will be replacing the content with CSS style sheets like Eric mentioned which will take over the page and control the font.
-  https://www.codingnepalweb.com/custom-select-menu-html-javascript/#google_vignette  -->
-    <!-- <article> 
-    <form class="wrapper">
-      <div class="select-btn"> -->
-        <!-- telling me what inline elements go within form element
-        this item is a clickable caption for the font inputs options
-        https://www.google.com/search?q=what+inline+elements+need+to+go+inside+%3Cform%3E&sca_esv=91f788fc0d48d683&rlz=1C5CHFA_enCA864CA864&biw=1728&bih=962&sxsrf=ANbL-n4gHsT0a3Y3aX4L5mB_ji6H3YlSgg%3A1775617497151&ei=2cXVafDzCM2A5OMPr-3puA0&ved=0ahUKEwiwxLLRot2TAxVNAHkGHa92GtcQ4dUDCBE&uact=5&oq=what+inline+elements+need+to+go+inside+%3Cform%3E&gs_lp=Egxnd3Mtd2l6LXNlcnAiLXdoYXQgaW5saW5lIGVsZW1lbnRzIG5lZWQgdG8gZ28gaW5zaWRlIDxmb3JtPjIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAFIqBtQiAZYnxlwAHgCkAEAmAGHAaABswKqAQMyLjG4AQPIAQD4AQGYAgSgAskCwgIEEAAYR8ICBBAjGCfCAgUQABjvBZgDAOIDBRIBMSBAiAYBkAYIkgcDMy4xoAeFDbIHAzIuMbgHxQLCBwUwLjIuMsgHC4AIAQ&sclient=gws-wiz-serp -->
-        <!-- <label>Select font-family</label> -->
-        <!-- don't need "search" -->
-        <!-- <i>▾</i>
-      </div> -->
+	<main>
+		<section class="font-section">
+			<label>Font Family</label>
+			<div class="fonts">
+				<button class="font-card" data-font="Sans-serif">
+					<span class="font-preview" style="font-family:'Inter', sans-serif;">Aa</span>
+					<span class="font-label">Sans Serif</span>
+				</button>
+				<button class="font-card" data-font="Serif">
+					<span class="font-preview" style="font-family: 'Times New Roman', serif;">Aa</span>
+					<span class="font-label">Serif</span>
+				</button>
+				<button class="font-card" data-font="Mono">
+					<span class="font-preview" style="font-family: 'Roboto Mono', monospace;">Aa</span>
+					<span class="font-label">Monospace</span>
+				</button>
+			</div>
+			<p id="font-description"></p>
+		</section>
 
-    <div class="font-section">
-      <label>Font Family</label>
-      <div class="fonts">
-        <button class="font-card" data-font="Sans-serif">
-          <span class="font-preview" style="font-family:'Inter', sans-serif;">Aa</span>
-          <span class="font-label">Sans Serif</span>
-        </button>
-        <button class="font-card" data-font="Serif">
-          <span class="font-preview" style="font-family: 'Times New Roman', serif;">Aa</span>
-          <span class="font-label">Serif</span>
-        </button>
-        <button class="font-card" data-font="Mono">
-          <span class="font-preview" style="font-family: 'Roboto Mono', monospace;">Aa</span>
-          <span class="font-label">Monospace</span>
-        </button>
-      </div>
-    </div>
+		<section class="bg-color">
+			<label>Background</label>
+				<div class="bg-swatches" id="bg-swatches">
+					<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes -->
+					<!-- needed a way to store the hex color value on each swatch button so applyBackground and savePreset could read it back when clicked -->
+					<!-- learned that data-color lets me attach the hex value directly to the element so JavaScript can access it with dataset.color without needing a separate variable, easier shortcut for me -->
+					<button class="swatch font-card" data-color="#FAF9F6" style="background:#FAF9F6;" title="Light">
+						<span class="font-label" style="color: #2c2c2c;">Light</span>
+					</button>
+					<button class="swatch font-card" data-color="#2c2c2c" style="background:#2c2c2c;" title="Dark">
+						<span class="font-label" style="color: #FAF9F6;">Dark</span>
+					</button>
+					<button class="swatch font-card" data-color="#F5F0E8" style="background:#F5F0E8;" title="Paper">
+						<span class="font-label" style="color: #2c2c2c;">Paper</span>
+					</button>
+				</div>
+				<p id="bg-description"></p>
+		</section>
 
-      <div class="content">
-        <!-- changed search to option -->
-        <ul class="options"></ul>
-      </div>
-    </form>
-  <p id="font-description"></p>
+			<section class="preset-section">
+				<p class="preset-title">Presets</p>
+				<form class="preset-form"> 
+					<!-- taken and changed from forms-params-storage tutorial -->
+					<!-- https://github.com/typography-interaction-2526/forms-params-storage -->
+					<!-- Different types can control what is allowed: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
+					<input id="pre" name="preset" placeholder="Preset name" required type="text">
+					<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/submit -->
+					<!-- based on michaels feedback using input for user text entry and submit for handling save action -->
+					<button type="submit">Save</button>
+				</form>
+				<ul id="preset-list"></ul>
+			</section>
 
-      <div class="bg-color">
-        <label>Background</label>
-          <div class="bg-swatches" id="bg-swatches">
-            <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes -->
-            <!-- needed a way to store the hex color value on each swatch button so applyBackground and savePreset could read it back when clicked -->
-            <!-- learned that data-color lets me attach the hex value directly to the element so JavaScript can access it with dataset.color without needing a separate variable, easier shortcut for me -->
-            <button class="swatch font-card" data-color="#FAF9F6" style="background:#FAF9F6;" title="Light">
-              <span class="font-label" style="color: #2c2c2c;">Light</span>
-            </button>
-            <button class="swatch font-card" data-color="#2c2c2c" style="background:#2c2c2c;" title="Dark">
-              <span class="font-label" style="color: #FAF9F6;">Dark</span>
-            </button>
-            <button class="swatch font-card" data-color="#F5F0E8" style="background:#F5F0E8;" title="Paper">
-              <span class="font-label" style="color: #2c2c2c;">Paper</span>
-            </button>
-          </div>
-      </div>
+			<button id="resetBtn">Clear</button>
+		</main>
 
-      <p id="bg-description"></p>
+			<script src="script.js"></script>
+			<script src="background.js"></script>
+			<script src="presets.js"></script>
 
-      <div class="preset-section">
-        <p class="preset-title">Presets</p>
-
-      <form class="preset-form"> 
-        <!-- taken and changed from forms-params-storage tutorial -->
-        <!-- https://github.com/typography-interaction-2526/forms-params-storage -->
-        <!-- Different types can control what is allowed: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
-        <input id="pre" name="preset" placeholder="Preset name" required type="text">
-        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/submit -->
-        <!-- based on michaels feedback using input for user text entry and submit for handling save action -->
-         <button type="submit">Save</button>
-      </form>
-
-        <ul id="preset-list"></ul>
-      </div>
-
-
-      </article>
-        <button id="resetBtn">Clear</button>
-
-    
-      <script src="script.js"></script>
-      <script src="background.js"></script>
-      <script src="presets.js"></script>
-
-  </body>
+</body>
 </html>

@@ -4,6 +4,19 @@
 // I learned that attaching a function to window makes it globally accessible across scripts, I have my pages separate for organization and to better understand the functions for my own learning but with this I have to use functions like this so the file can reach around and grab the functions applied to the other js pages
 window.applyFont = applyFont
 
+// tracking the active font outside the function mentioned from Claude when I was tryign to tackle the bottom half of this function below. 
+// moved highter up to match background.js file cause I don't think this was working
+// https://claude.ai/chat/a7bf4aa3-3f50-4daf-9810-dbfe15cd44e9
+let activeFontCSS = null;
+
+// following previously applied background code so reset still works after reopening popup and font clears
+// https://developer.chrome.com/docs/extensions/reference/api/storage
+chrome.storage.local.get("activeFontCSS", (result) => {
+   if (result.activeFontCSS) {
+        activeFontCSS = result.activeFontCSS;
+    }
+});
+
 // https://chatgpt.com/share/69dfc366-0530-8330-a8ed-391d485cbaf3
 // I wanted the page to react when a saved preset was clicked in the popup
 // more research here too "Chrome Extensions runtime.onMessage" https://developer.chrome.com/docs/extensions/reference/api/runtime#event-onMessage
@@ -12,7 +25,8 @@ chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "APPLY_PRESET") {
     console.log("received preset:", message.preset)
     document.body.style.backgroundColor = message.preset.background
-    document.body.style.fontFamily = message.preset.fontFamily
+    // document.body.style.fontFamily = message.preset.fontFamily
+    applyFont(message.preset.fontFamily)
   }
 })
 
@@ -87,10 +101,6 @@ const fontDescriptions = {
     "Mono": "Fixed spacing. Helpful for dense text."
 };
 
-// tracking the active font outside the function mentioned from Claude when I was tryign to tackle the bottom half of this function below. 
-// https://claude.ai/chat/a7bf4aa3-3f50-4daf-9810-dbfe15cd44e9
-let activeFontCSS = null;
-
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer
 // coding tutor showed me applyfont function this is the fonts being applied within the drop down
 // maps each font name to its css file within the folder font-family when selected
@@ -115,7 +125,6 @@ async function applyFont(font) {
     console.error("Font not found:", font);
     return;
   }
-
   // Get the active tab (from the tutorial)
   const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
 
@@ -136,8 +145,10 @@ async function applyFont(font) {
 
   // system can remember what font is active
   activeFontCSS = cssFile;
-}
 
+  // adding from backround js, fixed spelling error and ultimately where bug was and why font was not resetting on web when leaving and entering the extension
+chrome.storage.local.set({ activeFontCSS: cssFile });
+}
 
 // searched in google how to remove injected CSS from a chrome extension top search and a couple articles recommended a function which I have manipulated below to follow my style sheets
 // async needed because function uses await - without it the await calls will not work shown earlier in my work
@@ -161,6 +172,10 @@ async function applyFont(font) {
             // reset activeFontCSS to null so extension removes active font
             // setting the variable back to null clears the reference so the next font can apply cleanly
             activeFontCSS = null;
+
+        // copying background function again because font is stuck on the page
+        chrome.storage.local.remove("activeFontCSS");
+    
         }
         // from previous function and continuation of tutorial https://www.codingnepalweb.com/custom-select-menu-html-javascript/
         // selectBtn.firstElementChild.innerText = selectedLi.innerText;

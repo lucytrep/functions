@@ -61,7 +61,7 @@ p {
 
 label {
   display: block;
-  margin-block-end: 0.5rem;
+  margin-block-end: 0.85rem;
   padding-inline-start: 0.25rem;
   color: black;
   font-size: 0.94rem;
@@ -76,7 +76,7 @@ label {
 }
 
 #font-description {
-  margin-block-end: 0.63rem;
+  padding-block-start: 0.94rem;
 }
 
 #font-description:empty {
@@ -92,9 +92,7 @@ label {
 }
 
 .font-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  padding-block-end: 0.95rem;
 }
 
 .fonts {
@@ -133,7 +131,6 @@ label {
   width: 6.25rem;
   height: 5rem;
   border-radius: var(--radius-card);
-  margin-block-start: 0.31rem;
 }
 
 .font-section .font-card.active {

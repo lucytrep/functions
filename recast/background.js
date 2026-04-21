@@ -31,17 +31,18 @@ async function applyBackground(color) {
 
     const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
 
+
+    await chrome.scripting.insertCSS({
+      target: { tabId: tab.id },
+      files: [cssFile]
+    });
+
     if (activeBackgroundCSS) {
         await chrome.scripting.removeCSS({
         target: { tabId: tab.id },
         files: [activeBackgroundCSS]
-        });
+      });
     }
-  await chrome.scripting.insertCSS({
-    target: { tabId: tab.id },
-    files: [cssFile]
-  });
-
   activeBackgroundCSS = cssFile;
 
 //   activeBackgroundCSS = cssFile;
