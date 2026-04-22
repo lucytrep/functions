@@ -183,8 +183,11 @@ chrome.storage.local.set({ activeFontCSS: cssFile });
         // selectBtn.firstElementChild.innerText = "Select font-family";
         // when button is pressed this is just making sure no description shows when I type in ""
         document.getElementById("font-description").textContent = "";
+        document.getElementById("bg-description").textContent = "";
         // re render with no selection from previous function in tutorial
         // addFont();
+        // same pattern as below but clearing the border outline when the user resets the page
+        document.querySelectorAll(".font-section .font-card, #bg-swatches .swatch").forEach(s => s.classList.remove("active"))
     });
 
 // updated
