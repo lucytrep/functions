@@ -19,6 +19,14 @@ let applyPreset = (preset) => {
 
 }
 
+// made a variable for each font name to its real CSS value, preset was not returning Mono properly and kept coming back in Times
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
+const allFonts = {
+  "Sans-serif": "sans-serif",
+  "Serif": "serif",
+  "Mono": "monospace"
+}
+
 // I wanted the saved presets to show up as a list every time the user saves one and when they first open the extension
 // The Claude thread helped me understand that localStorage only stores strings not arrays so I needed JSON.parse to convert it back
 // https://claude.ai/share/8041d88f-3be1-4d86-96db-65a10a97d8a7
@@ -42,7 +50,10 @@ let renderPresets = () => {
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
 // I learned I could set backgroundColor and fontFamily directly on the element from the saved preset object
 li.style.backgroundColor = preset.background
-li.style.fontFamily = preset.fontFamily
+// coding tutor showed me this object pattern to look up values by key, same as cssFont[font] in applyFont
+// using square bracket lookup with || as a fallback so it doesn't return null
+li.style.fontFamily = allFonts[preset.fontFamily] || preset.fontFamily
+// li.style.fontFamily = preset.fontFamily
 // I also needed the text color to work on both light and dark backgrounds
 // the ternary checks if the background is dark and switches the text to light and vice versa
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator
