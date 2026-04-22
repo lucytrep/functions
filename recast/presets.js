@@ -76,8 +76,16 @@ presetName.style.cursor = "pointer"
 // so the preset applies to the active webpage again
 // I learned that the preset row can listen for a click event and call the shared font and background functions again through window
 li.addEventListener("click", () => {
-  window.applyFont?.(preset.fontFamily)
-  window.applyBackground?.(preset.background)
+// added guard so it only calls applyFont and applyBackground if the preset has those values saved
+// before I had window.applyFont?. which stops it crashing if applyFont doesnt exist on window
+// but it was still calling applyFont with undefined as the argument which hit the if (!cssFile) check and threw "Font not found: undefined"
+// if (preset.fontFamily) checks the value before calling the function so it never reaches applyFont if no font was saved
+// https://www.geeksforgeeks.org/javascript/guard-clause-in-javascript/
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+  if (preset.fontFamily) window.applyFont?.(preset.fontFamily)
+  if (preset.background) window.applyBackground?.(preset.background)
+  // window.applyFont?.(preset.fontFamily)
+  // window.applyBackground?.(preset.background)
 })
 
     // I originally had the delete button outside this function, but `list` was not defined there
