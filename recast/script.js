@@ -199,3 +199,17 @@ document.querySelectorAll(".font-section .font-card").forEach(font => {
     applyFont(font.dataset.font)
   })
 })
+
+// I was trying to close the popup window using a tutorial pattern with removeChild
+// https://github.com/iamOmarFaruk/chrome-extension-rounded-popup-corners/tree/main tutorial I remembered with close button
+// but it was not working because my popup is an extension window not an injected DOM element, which I now realize hence why I was told to share to Evgenii for his extension that is
+// the tutorial assumed a div injected into a webpage which meant removeChild had no parent to remove from but I just had a button
+// Chat helped me understand the difference and that window.close() is what I should use for extension popups like mine
+// I also needed DOMContentLoaded so the button exists before the listener attaches or else getElementById returns null and the click does nothing
+// https://chatgpt.com/share/69e8ef0c-a7d0-83ea-828c-eca932a8c9aa
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/close
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("welcome-close")?.addEventListener("click", () => {
+    window.close();
+  });
+});

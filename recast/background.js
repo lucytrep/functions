@@ -31,13 +31,18 @@ async function applyBackground(color) {
 
     const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
 
-
     await chrome.scripting.insertCSS({
       target: { tabId: tab.id },
       files: [cssFile]
     });
-
-    if (activeBackgroundCSS) {
+    
+// same && pattern from prof Arena file checking two conditions before running
+// first checks if a background is active, then checks it is not the same as the one just applied
+// so it only removes the old one and never accidentally removes the one just inserted
+// when I pressed dark it was not applying because insertCSS and removeCSS were running in the wrong order
+// found removeCSS on the same Chrome docs page as insertCSS while trying to figure out why backgrounds were stacking
+// https://developer.chrome.com/docs/extensions/reference/api/scripting#method-removeCSS
+if (activeBackgroundCSS && activeBackgroundCSS !== cssFile) {
         await chrome.scripting.removeCSS({
         target: { tabId: tab.id },
         files: [activeBackgroundCSS]
